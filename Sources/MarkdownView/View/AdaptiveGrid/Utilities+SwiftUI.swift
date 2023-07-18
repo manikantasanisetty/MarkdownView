@@ -32,10 +32,10 @@ fileprivate struct _TaskModifier<E: Equatable>: ViewModifier {
             content
                 .onAppear { currentTask = Task(priority: priority, operation: action) }
                 .onDisappear { currentTask?.cancel() }
-                .onChange(of: id) { _ in
+                .onChange(of: id, { _ in
                     currentTask?.cancel()
                     currentTask = Task(priority: priority, operation: action)
-                }
+                })
         }
     }
 }

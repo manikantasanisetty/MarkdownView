@@ -91,10 +91,10 @@ struct CodeHighlighterUpdator: ViewModifier {
                 let theme = colorScheme == .dark ? theme.darkModeThemeName : theme.lightModeThemeName
                 Highlightr.shared?.setTheme(to: theme)
             }
-            .onChange(of: theme) { newTheme in
+            .onChange(of: theme, { newTheme in
                 let theme = colorScheme == .dark ? newTheme.darkModeThemeName : newTheme.lightModeThemeName
                 Highlightr.shared?.setTheme(to: theme)
-            }
+            })
             #endif
     }
 }
